@@ -1,0 +1,5 @@
+tr id="#{comment.id}_row"
+  td
+    =comment.content
+  td
+    = link_to 'X', comment, method: :delete, data: { confirm: 'Are you sure?', remote: 'true' } 

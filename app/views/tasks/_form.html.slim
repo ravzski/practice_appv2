@@ -1,0 +1,30 @@
+h1 Tasks
+
+=form_for(@task) do |f|
+  =f.text_field :title
+  br
+  =f.text_area :description
+  br
+  =f.submit
+
+-unless @task.id.blank?
+  
+  
+    
+  h3 Comments
+
+  #error-container
+  
+  #comments-list
+    table
+      tbody
+
+        -@task.comments.each do |comment|
+          =render 'comment',:comment=>comment
+      
+
+  =form_for(@comment,:remote=>true) do |f|
+    =f.hidden_field :task_id, :value=>params[:id]
+    =f.text_field :content
+    br
+    =f.submit
